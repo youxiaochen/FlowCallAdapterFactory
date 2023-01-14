@@ -24,10 +24,10 @@ class MainViewModel : BaseViewModel() {
         httpJob0?.cancel()
         httpJob0 = viewModelScope.launch {
             getService(TestApi::class).getUserBean(TestApi.URL)
-                .onStart { Log.i("youxiaochen", "testHttpRequest0 loading start...") }
-                .catch { Log.i("youxiaochen", "testHttpRequest0 loading error ...$it") }
-                .onCompletion { Log.i("youxiaochen", "testHttpRequest0 loading complete...$it") }
-                .collect { Log.i("youxiaochen", "testHttpRequest0 result = $it") }
+                .onStart { Log.d("youxiaochen", "testHttpRequest0 loading start...") }
+                .catch { Log.d("youxiaochen", "testHttpRequest0 loading error ...$it") }
+                .onCompletion { Log.d("youxiaochen", "testHttpRequest0 loading complete...$it") }
+                .collect { Log.d("youxiaochen", "testHttpRequest0 result = $it") }
         }
     }
 
@@ -35,10 +35,10 @@ class MainViewModel : BaseViewModel() {
         httpJob1?.cancel()
         httpJob1 = viewModelScope.launch {
             getService(TestApi::class).getUserBean(TestApi.URL2)
-                .onStart { Log.i("youxiaochen", "testHttpRequest1 loading start...") }
-                .catch { Log.i("youxiaochen", "testHttpRequest1 loading error ...$it") } //erro
-                .onCompletion { Log.i("youxiaochen", "testHttpRequest1 loading complete...$it") } //cancel时 it不为空, error时it为空并触发catch...
-                .collect { Log.i("youxiaochen", "testHttpRequest1 result = $it") }
+                .onStart { Log.d("youxiaochen", "testHttpRequest1 loading start...") }
+                .catch { Log.d("youxiaochen", "testHttpRequest1 loading error ...$it") } //erro
+                .onCompletion { Log.d("youxiaochen", "testHttpRequest1 loading complete...$it") } //cancel时 it不为空, error时it为空并触发catch...
+                .collect { Log.d("youxiaochen", "testHttpRequest1 result = $it") }
         }
     }
 }
